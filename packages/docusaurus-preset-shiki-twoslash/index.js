@@ -1,5 +1,6 @@
 const path = require("path")
 const { default: twoslash } = require("remark-shiki-twoslash")
+const remarkHtmlToJsx = require('./remark-html-to-jsx')
 
 /**
  * @param {import("@docusaurus/types").DocusaurusContext} context
@@ -54,7 +55,7 @@ function preset(context, pluginOptions) {
     if (!a.beforeDefaultRemarkPlugins) {
       a.beforeDefaultRemarkPlugins = []
     }
-    a.beforeDefaultRemarkPlugins.push([twoslash, options])
+    a.beforeDefaultRemarkPlugins.push([twoslash, options], remarkHtmlToJsx)
     return a
   }
 
